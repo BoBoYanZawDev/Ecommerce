@@ -50,20 +50,14 @@
             >
               Hot
             </div>
-            <h1 class="text-2xl mt-3 font-medium">Product name</h1>
+            <h1 class="text-2xl mt-3 font-medium">{{$product->name}}</h1>
             <a
               href="#description"
               class="mt-2 text-[16px] mb-5 line-clamp-3 text-black/70 font-medium"
-              >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error
-              debitis aliquid non cum. Voluptas aut dolores eaque optio
-              excepturi expedita hic fugiat nemo porro voluptatibus nisi
-              molestiae aspernatur facilis repudiandae exercitationem dolorum
-              vel repellat, maiores totam, numquam amet dolorem assumenda
-              libero? Officiis, soluta sint facilis eum vitae veniam hic
-              unde.</a
+              >{{$product->description}}</a
             >
             <div class="flex items-end mt-1 gap-2">
-              <p class="font-bold text-2xl">100000 MMK</p>
+              <p class="font-bold text-2xl">{{$product->price}} MMK</p>
               <!-- <p v-else class="font-bold text-2xl">No product Yet</p> -->
             </div>
             <div class="my-8 h-[1px] w-full bg-black/20"></div>
@@ -98,6 +92,7 @@
               Add to Cart
             </button>
           </div>
+            <!-- Latest Products Section -->
           <div class="md:mt-0 mt-10">
             <div class="flex items-center justify-between">
               <h1 class="text-2xl font-semibold">Latest Products</h1>
@@ -106,94 +101,19 @@
               >
             </div>
             <div class="grid lg:grid-cols-3 mb-10 mt-7 gap-3">
-              <a class="h-min block" href="/productDetail">
-                <div
-                  class="rounded-lg h-full flex lg:flex-col flex-row cursor-pointer hover:translate-y-[-10px] transition-all duration-200 group shadow-md hover:shadow-lg overflow-hidden"
-                >
-                  <div class="w-full lg:w-full basis-[40%] overflow-hidden">
-                    <img
-                      src="https://cdn.prod.website-files.com/62f51a90d298e65b94bbffcd/62f6a67c4666f047ada3ba87_image-10-shop-product-shopwave-template-p-500.png"
-                      class="w-full h-full object-cover group-hover:scale-[1.1] transition-all duration-200"
-                    />
-                  </div>
-                  <div class="py-4 lg:-w-full basis-[60%] px-6">
-                    <p class="text-sm text-primary">Clothes</p>
-                    <h1
-                      class="mt-2 md:text-lg text-base line-clamp-1 font-bold group-hover:text-primary transition-all duration-200"
-                    >
-                      Product Name
-                    </h1>
-                    <div
-                      class="flex xl:flex-row flex-col xl:items-center font-semibold mt-2 xl:gap-2"
-                    >
-                      <p class="text-primary">100000 MMK</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a class="h-min block" href="/productDetail">
-                <div
-                  class="rounded-lg h-full flex lg:flex-col flex-row cursor-pointer hover:translate-y-[-10px] transition-all duration-200 group shadow-md hover:shadow-lg overflow-hidden"
-                >
-                  <div class="w-full lg:w-full basis-[40%] overflow-hidden">
-                    <img
-                      src="https://cdn.prod.website-files.com/62f51a90d298e65b94bbffcd/62f6a67c4666f047ada3ba87_image-10-shop-product-shopwave-template-p-500.png"
-                      class="w-full h-full object-cover group-hover:scale-[1.1] transition-all duration-200"
-                    />
-                  </div>
-                  <div class="py-4 lg:-w-full basis-[60%] px-6">
-                    <p class="text-sm text-primary">Clothes</p>
-                    <h1
-                      class="mt-2 md:text-lg text-base line-clamp-1 font-bold group-hover:text-primary transition-all duration-200"
-                    >
-                      Product Name
-                    </h1>
-                    <div
-                      class="flex xl:flex-row flex-col xl:items-center font-semibold mt-2 xl:gap-2"
-                    >
-                      <p class="text-primary">100000 MMK</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a class="h-min block" href="/productDetail">
-                <div
-                  class="rounded-lg h-full flex lg:flex-col flex-row cursor-pointer hover:translate-y-[-10px] transition-all duration-200 group shadow-md hover:shadow-lg overflow-hidden"
-                >
-                  <div class="w-full lg:w-full basis-[40%] overflow-hidden">
-                    <img
-                      src="https://cdn.prod.website-files.com/62f51a90d298e65b94bbffcd/62f6a67c4666f047ada3ba87_image-10-shop-product-shopwave-template-p-500.png"
-                      class="w-full h-full object-cover group-hover:scale-[1.1] transition-all duration-200"
-                    />
-                  </div>
-                  <div class="py-4 lg:-w-full basis-[60%] px-6">
-                    <p class="text-sm text-primary">Clothes</p>
-                    <h1
-                      class="mt-2 md:text-lg text-base line-clamp-1 font-bold group-hover:text-primary transition-all duration-200"
-                    >
-                      Product Name
-                    </h1>
-                    <div
-                      class="flex xl:flex-row flex-col xl:items-center font-semibold mt-2 xl:gap-2"
-                    >
-                      <p class="text-primary">100000 MMK</p>
-                    </div>
-                  </div>
-                </div>
-              </a>
+              @foreach ($latestProducts as $product)
+              <x-latestProduct :product="$product"/>
+              @endforeach
             </div>
           </div>
+            <!-- Latest Products Section End-->
           <div class="w-full h-[1px] bg-black/10 my-16"></div>
+          <!-- Product Information Section -->
           <div>
             <h1 class="text-2xl font-semibold">Product information</h1>
             <div class="mt-4" id="description">
               <p class="text-lg text-black/50">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-                dolorem facere veniam, esse iusto itaque architecto, a quis
-                cupiditate beatae quam aspernatur, dolores sint corrupti
-                similique ullam autem eveniet ea tenetur ut? Itaque molestias
-                quod similique laborum aliquid. Atque similique expedita tempora
-                est commodi distinctio sequi ipsum ducimus doloremque beatae!
+              {{$product->description}}
               </p>
             </div>
           </div>
@@ -229,20 +149,12 @@
                         </div>
                     </div>
                 </div> -->
-          <div class="my-16">
+          <!-- <div class="my-16">
             <h1 class="text-2xl font-semibold">Shipping Information Updated</h1>
             <p class="text-lg text-black/50">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit lobortis
-              arcu enim urna adipiscing praesent velit viverra sit semper lorem
-              eu cursus vel hendrerit elementum morbi curabitur etiam nibh
-              justo, lorem aliquet donec sed sit mi dignissim at ante massa
-              mattis. Viverra aliquet eget sit amet tellus cras. Cursus sit amet
-              dictum sit amet. Diam donec adipiscing tristique risus nec. Diam
-              donec adipiscing tristique risus nec feugiat in. Quisque egestas
-              diam in arcu cursus euismod quis viverra nibh. Quis imperdiet
-              massa tincidunt nunc.
+            {{$product->description}}
             </p>
-          </div>
+          </div> -->
         </div>
         <div class="lg:basis-[35%] md:basis-[40%]">
           <div
@@ -253,17 +165,14 @@
             >
               Hot
             </div>
-            <h1 class="text-2xl mt-3 font-medium">Product Name</h1>
+            <h1 class="text-2xl mt-3 font-medium"> {{$product->name}}</h1>
             <a
               href="#description"
               class="mt-2 text-[16px] mb-5 text-black/70 line-clamp-3 font-medium"
-              >Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Accusamus aspernatur dolores voluptatibus eligendi ab nemo a rerum
-              ea totam dolore, laudantium nesciunt adipisci quas iste
-              praesentium. Nesciunt quod autem excepturi!</a
+              >{{$product->description}}</a
             >
             <div class="flex items-end mt-1 gap-2">
-              <p class="font-bold text-2xl">10000 MMK</p>
+              <p class="font-bold text-2xl">{{$product->price}} MMK</p>
               <!-- <p v-else class="font-bold text-2xl">No product Yet</p> -->
             </div>
             <div class="my-8 h-[1px] w-full bg-black/20"></div>
@@ -313,10 +222,10 @@
                     <p
                       class="text-lg group-hover:text-primary transition-all duration-200 font-semibold"
                     >
-                      Product Name
+                    {{$product->name}}
                     </p>
                     <div class="flex items-center gap-2">
-                      <p class="font-bold">100000 MMK</p>
+                      <p class="font-bold">{{$product->price}} MMK</p>
                     </div>
                   </div>
                 </div>
@@ -333,10 +242,10 @@
                     <p
                       class="text-lg group-hover:text-primary transition-all duration-200 font-semibold"
                     >
-                      Product Name
+                    {{$product->name}}
                     </p>
                     <div class="flex items-center gap-2">
-                      <p class="font-bold">100000 MMK</p>
+                      <p class="font-bold">{{$product->price}} MMK</p>
                     </div>
                   </div>
                 </div>
@@ -353,10 +262,10 @@
                     <p
                       class="text-lg group-hover:text-primary transition-all duration-200 font-semibold"
                     >
-                      Product Name
+                    {{$product->name}}
                     </p>
                     <div class="flex items-center gap-2">
-                      <p class="font-bold">100000 MMK</p>
+                      <p class="font-bold">{{$product->price}} MMK</p>
                     </div>
                   </div>
                 </div>

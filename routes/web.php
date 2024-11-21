@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [ProductController::class ,'index']);
+
+Route::get('/products/{productId}', [ProductDetailController::class,'detail']);
 
 Route::get('/login', function () {
     return view('login');
@@ -16,10 +18,6 @@ Route::get('/register', function () {
 
 Route::get('/checkout', function () {
     return view('checkout');
-});
-
-Route::get('/productDetail', function () {
-    return view('productDetail');
 });
 
 Route::get('/admin', function () {
