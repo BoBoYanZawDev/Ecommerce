@@ -101,8 +101,8 @@
               >
             </div>
             <div class="grid lg:grid-cols-3 mb-10 mt-7 gap-3">
-              @foreach ($latestProducts as $product)
-              <x-latestProduct :product="$product"/>
+              @foreach ($latestProducts as $latestproduct)
+              <x-latestProduct :product="$latestproduct"/>
               @endforeach
             </div>
           </div>

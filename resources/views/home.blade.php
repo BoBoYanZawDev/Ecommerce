@@ -70,6 +70,7 @@
         <x-card :product="$product" />
       @endforeach
         </div>
+        {{$products->links()}}
         <!-- <div class="w-full h-[300px] flex items-center justify-center font-bold font-lg text-black/40">
                     <p>No Products yet.</p>
                 </div> -->
